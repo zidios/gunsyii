@@ -32,27 +32,27 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/customAssets/images/logo.png', [
+            'alt' => Yii::$app->name,
+            'style' => 'height:40px;'
+        ]),
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-dark sec-bg-color fixed-top']
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+            ['label' => 'Оружие', 'url' => ['#']],
+            ['label' => 'Стрелковый тир', 'url' => ['#']],
+            ['label' => 'Оптика', 'url' => ['#']],
+            ['label' => 'Тепловизоры', 'url' => ['#']],
+            ['label' => 'О компании', 'url' => ['#']],
+            ['label' => 'Контакты', 'url' => ['#']]
         ]
+    ]);
+    $city = isset($_COOKIE['usercity']) ? $_COOKIE['usercity']: null;
+    echo Html::tag('div', 'Ваш город: ' . Html::tag('span', $city, ['class' => 'inner-span']), [
+        'class' => 'ms-auto navbar-text text-white city-select'
     ]);
     NavBar::end();
     ?>
@@ -68,15 +68,50 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+<footer id="footer" class="mt-auto">
+    <div class="footer-content py-3 sec-bg-color">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-3">
+                    <h4>Компания</h4>
+                    <div class="links-wrapper d-grid">
+                        <?=  Html::tag('a', 'О компании',['href'=>'#']) ?>
+                        <?=  Html::tag('a', 'Контакты',['href'=>'#']) ?>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-3">
+                    <h4>Покупателям</h4>
+                    <div class="links-wrapper d-grid">
+                        <?=  Html::tag('a', 'Оплата',['href'=>'#']) ?>
+                        <?=  Html::tag('a', 'Доставка',['href'=>'#']) ?>
+                        <?=  Html::tag('a', 'Подарочные сертификаты',['href'=>'#']) ?>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-3">
+                    <h4>Белгород</h4>
+                    <p>ул. Преображенская 139<br>+7 4722 33 04 71<br>
+                        ул. Преображенская 74<br>+7 4722 22 23 24</p>
+                    <?=  Html::tag('a', 'belohotnik@mail.ru',['href'=>'mailto:belohotnik@mail.ru?subject=Сайт Охотник']) ?>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-3">
+                    <h4>Воронеж</h4>
+                    <p>ул. Южно-Моравская 27, стр.3<br>
+                        +7 473 257 13 99<br>
+                        +7 473 257 13 00</p>
+                    <?=  Html::tag('a', 'belohotnik@mail.ru',['href'=>'mailto:belohotnik@mail.ru?subject=Сайт Охотник']) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="after-footer bg-transparent py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col12 text-center">&copy; "Охотник" <?= date('Y') ?></div>
+            </div>
         </div>
     </div>
 </footer>
-
+<?= \app\widgets\CitySelectorWidget::widget() ?>
 <?php $this->endBody() ?>
 </body>
 </html>

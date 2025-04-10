@@ -1,0 +1,147 @@
+
+html,
+body,
+.main-bg-color{
+    background: #252525;
+    color: #fff;
+}
+.sec-bg-color{
+    background: #198754;
+}
+.navbar-dark, .navbar-nav, footer a {
+    --bs-link-color-rgb: rgba(255, 255, 255,1);
+    --bs-nav-link-color: rgba(255, 255, 255,1);
+    --bs-navbar-hover-color: rgba(37, 37, 37, 0.75);
+    --bs-navbar-active-color: rgba(37, 37, 37, 1);
+}
+footer a:hover{
+    color: rgba(37, 37, 37, 1);
+}
+.city-select{
+    font-weight: bold;
+    cursor: pointer;
+}
+.center-slider {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.carousel-with-mask .carousel-inner .item img {
+    width: 100%;
+}
+
+.carousel-with-mask .carousel-caption {
+    background:  rgba(37, 37, 37, 0.8); /* Полупрозрачный серый фон */
+    padding: 20px;
+    bottom: 40px;
+    left: 15%;
+    right: 15%;
+    border-radius: 5px;
+}
+
+.carousel-with-mask .carousel-caption h4,
+.carousel-with-mask .carousel-caption p {
+    color: #fff;
+    text-shadow: none;
+}
+
+.carousel-image-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+#cityModal .modal-body {
+    padding: 30px;
+}
+
+.text-block {
+    padding: 2rem;
+    text-align: center;
+}
+
+.home-contacts .main-banner{
+    min-height: 70vh;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.home-contacts .bg-image {
+    background: url('/customAssets/images/home_bg.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+.home-contacts .bg-image.secondary-left {
+    background: url('/customAssets/images/home_bg_sec1.jpg') no-repeat center center;
+}
+.home-contacts .bg-image.secondary-right {
+    background: url('/customAssets/images/home_bg_sec2.jpg') no-repeat center center;
+}
+
+.home-contacts .bg-image.secondary-left,
+.home-contacts .bg-image.secondary-right{
+    min-height: 25vh;
+}
+
+.home-contacts .bg-image.secondary-left .overlay,
+.home-contacts .bg-image.secondary-right .overlay{
+    transition: all ease 0.2s;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.home-contacts .bg-image.secondary-left:hover .overlay,
+.home-contacts .bg-image.secondary-right:hover .overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer h4{
+    border-bottom: 1px solid #fff;
+}
+
+.links-wrapper{
+    grid-gap: 10px;
+}
+
+.links-wrapper a{
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 992px) {
+    .text-block {
+        margin-bottom: 2rem;
+    }
+
+    .text-block:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-with-mask .carousel-caption {
+        left: 5%;
+        right: 5%;
+        bottom: 10px;
+        padding: 10px;
+    }
+
+    .carousel-with-mask .carousel-caption h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .carousel-with-mask .carousel-caption p {
+        font-size: 12px;
+    }
+}
