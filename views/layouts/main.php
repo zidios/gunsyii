@@ -50,7 +50,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Контакты', 'url' => ['#']]
         ]
     ]);
-    $city = isset($_COOKIE['usercity']) ? $_COOKIE['usercity']: null;
+$coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
+    $city = isset($_COOKIE[$coockieName]) ? $_COOKIE[$coockieName]: null;
     echo Html::tag('div', 'Ваш город: ' . Html::tag('span', $city, ['class' => 'inner-span']), [
         'class' => 'ms-auto navbar-text text-white city-select'
     ]);

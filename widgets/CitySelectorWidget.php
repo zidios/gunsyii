@@ -2,22 +2,24 @@
 
 namespace app\widgets;
 
+use Yii;
 use yii\base\Widget;
 use yii\web\Cookie;
 
 class CitySelectorWidget extends Widget
 {
     public $cities = ['Белгород', 'Воронеж'];
-    public $cookieName = 'usercity';
+    private $cookieName = 'usercity';
     public $cookieExpire = 2592000;
 
     public function run()
     {
         parent::run();
 
+        $this->cookieName =!empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
+
 // Проверяем куки города, т.к. куки устанавливаются из JS, валидацию они не пройдут, вынимаем их напрямую
-        $city = isset($_COOKIE['usercity']) ? $_COOKIE['usercity']: null;
-// Регистрируем JS-код
+        $city = isset($_COOKIE[$this->cookieName]) ? $_COOKIE[$this->cookieName]: null;
         $this->registerJs($city);
 
         return $this->render('citySelector', [

@@ -16,7 +16,8 @@ $this->title = 'Оружейный салон "Охотник"';
                     <div class="m-auto position-relative">
                         <div class="mb-3 text-center"><?= Html::img('@web/customAssets/images/logo_sq_trans.png', ['alt' => 'logo2']) ?></div>
                         <?php
-                        $city = isset($_COOKIE['usercity']) ? $_COOKIE['usercity']: null;
+                        $coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
+                        $city = isset($_COOKIE[$coockieName]) ? $_COOKIE[$coockieName]: null;
                         switch ($city) {
                             case 'Белгород':
                                 echo Html::tag('h2', 'Белгород', ['class'=>'display-4 mb-4']);
