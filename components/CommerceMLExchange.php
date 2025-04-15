@@ -10,7 +10,6 @@ use yii\base\Component;
 use yii\web\Response;
 use yii\web\UnauthorizedHttpException;
 use yii\base\Exception;
-use function PHPUnit\Framework\directoryExists;
 
 class CommerceMLExchange extends Component
 {

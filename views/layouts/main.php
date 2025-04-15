@@ -4,14 +4,17 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
+use app\assets\RobotoAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
+RobotoAsset::register($this);
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
@@ -23,9 +26,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?: 'Оружейный салон "Охотник"' ?></title>
     <?php $this->head() ?>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-180x180.png">
@@ -55,8 +57,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Стрелковый тир', 'url' => ['#']],
             ['label' => 'Оптика', 'url' => ['#']],
             ['label' => 'Тепловизоры', 'url' => ['#']],
-            ['label' => 'О компании', 'url' => ['#']],
-            ['label' => 'Контакты', 'url' => ['#']]
+            ['label' => 'О компании', 'url' => [Url::to(['home/about'])]],
+            ['label' => 'Контакты', 'url' => [Url::to(['home/contacts'])]]
         ]
     ]);
 $coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
@@ -85,16 +87,17 @@ $coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$ap
                 <div class="col-lg-3 col-sm-6 mb-3">
                     <h4>Компания</h4>
                     <div class="links-wrapper d-grid">
-                        <?=  Html::tag('a', 'О компании',['href'=>'#']) ?>
-                        <?=  Html::tag('a', 'Контакты',['href'=>'#']) ?>
+                        <?=  Html::tag('a', 'О компании',['href'=>Url::to(['home/about'])]) ?>
+                        <?=  Html::tag('a', 'Контакты',['href'=>Url::to(['home/contacts'])]) ?>
+                        <?=  Html::tag('a', 'Политика конфиденцальности',['href'=>Url::to(['home/privacy'])]) ?>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-3">
                     <h4>Покупателям</h4>
                     <div class="links-wrapper d-grid">
-                        <?=  Html::tag('a', 'Оплата',['href'=>'#']) ?>
-                        <?=  Html::tag('a', 'Доставка',['href'=>'#']) ?>
-                        <?=  Html::tag('a', 'Подарочные сертификаты',['href'=>'#']) ?>
+                        <?=  Html::tag('a', 'Оплата',['href'=>Url::to(['home/payment'])]) ?>
+                        <?=  Html::tag('a', 'Доставка',['href'=>Url::to(['home/delivery'])]) ?>
+                        <?=  Html::tag('a', 'Подарочные сертификаты',['href'=>Url::to(['home/giftcards'])]) ?>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 mb-3">

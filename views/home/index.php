@@ -5,7 +5,6 @@
 use yii\bootstrap5\Carousel;
 use yii\bootstrap5\Html;
 
-$this->title = 'Оружейный салон "Охотник"';
 ?>
 <div class="site-index">
     <section class="home-contacts">
@@ -134,22 +133,22 @@ $this->title = 'Оружейный салон "Охотник"';
 
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner1.jpg', ['alt' => 'Калашников']),['href'=>'https://kalashnikovgroup.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner1.jpg', ['alt' => 'Калашников']),['href'=>'https://kalashnikovgroup.ru/','rel' => 'nofollow']) ?>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner2.png', ['alt' => 'EDgun']),['href'=>'https://edgun.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner2.png', ['alt' => 'EDgun']),['href'=>'https://edgun.ru/','rel' => 'nofollow']) ?>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner3.png', ['alt' => 'Левша']),['href'=>'https://www.levsha.spb.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner3.png', ['alt' => 'Левша']),['href'=>'https://www.levsha.spb.ru/','rel' => 'nofollow']) ?>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner4.jpg', ['alt' => 'Арсенал']),['href'=>'https://arsenal-arms.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner4.jpg', ['alt' => 'Арсенал']),['href'=>'https://arsenal-arms.ru/','rel' => 'nofollow']) ?>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner5.png', ['alt' => 'Inf iRay']),['href'=>'https://infiray.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner5.png', ['alt' => 'Inf iRay']),['href'=>'https://infiray.ru/','rel' => 'nofollow']) ?>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-3 text-center partners-item">
-                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner6.jpg', ['alt' => 'Кольчуга']),['href'=>'https://www.kolchuga.ru/']) ?>
+                    <?= Html::tag('a', Html::img('@web/customAssets/images/partners/partner6.jpg', ['alt' => 'Кольчуга']),['href'=>'https://www.kolchuga.ru/','rel' => 'nofollow']) ?>
                 </div>
             </div>
         </div>
