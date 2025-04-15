@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Shop;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +62,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+        var_dump(Yii::getAlias('@webroot'));
+        exit();
         return $this->render('index');
     }
 

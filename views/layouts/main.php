@@ -25,6 +25,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <head>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-180x180.png">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
