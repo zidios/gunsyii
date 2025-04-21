@@ -10,5 +10,4 @@ class Category extends ActiveRecord
         //На всякий случай
         return '{{category}}';
     }
-
 }

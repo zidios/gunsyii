@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 
-class ExchangeController extends Controller
+class ExchangeController extends AppController
 {
     public function actionIndex()
     {

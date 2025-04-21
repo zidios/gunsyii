@@ -65,7 +65,6 @@ class SiteController extends Controller
 
         var_dump(Yii::getAlias('@webroot'));
         exit();
-        return $this->render('index');
     }
 
     /**

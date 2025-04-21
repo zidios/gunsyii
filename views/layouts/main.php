@@ -4,7 +4,6 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
-use app\assets\RobotoAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
@@ -14,13 +13,11 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-RobotoAsset::register($this);
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -31,11 +28,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= Yii::getAlias('@web') ?>/cropped-favicon-2-180x180.png">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-    </style>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>

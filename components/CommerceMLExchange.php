@@ -393,7 +393,7 @@ class CommerceMLExchange extends Component
         $imagePath = (string)$productNode->Картинка;
         $imageTmpPath = Yii::getAlias($this->tempPath) . DIRECTORY_SEPARATOR . $imagePath;
         if(!empty($imagePath) && is_file($imageTmpPath)){
-            $targetPath = Yii::getAlias('@webroot') . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
+            $targetPath = Yii::getAlias('@web') . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
             if (!is_dir($targetPath)) {
                 mkdir($targetPath, 0755, true);
             }
