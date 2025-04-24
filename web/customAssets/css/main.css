@@ -6,6 +6,20 @@ body,
     color: #fff;
 }
 
+.breadcrumbs{
+    display: flex;
+    column-gap: 30px;
+}
+.breadcrumbs a{
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.breadcrumbs a:hover{
+    color: #368656;
+}
+
+
 .sec-bg-color{
     background: #198754;
 }
@@ -159,6 +173,20 @@ h1.page_title{
 }
 
 /* END productBlock */
+/* productPage */
+
+.productPage .productPrice{
+    font-size: 2rem;
+}
+.productPage .productArticle{
+    font-style: italic;
+}
+.productPage .productImage{
+    background-position: top left;
+    min-height: 600px;
+}
+
+/* END productPage */
 
 
 @media (max-width: 992px) {

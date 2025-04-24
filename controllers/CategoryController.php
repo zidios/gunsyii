@@ -74,9 +74,9 @@ class CategoryController extends AppController
         }
 
         if(is_array($activeCategoryIds) && count($activeCategoryIds)){
-            $query = Product::find()->where(['shop_id' => $shop_id, 'category_id' => $activeCategoryIds, 'is_deleted'=>0]);
+            $query = Product::find()->where(['shop_id' => $shop_id, 'category_id' => $activeCategoryIds, 'is_deleted'=>0])->andWhere(['>', 'price', 0]);
         } else {
-            $query = Product::find()->where(['shop_id' => $shop_id]);
+            $query = Product::find()->where(['shop_id' => $shop_id, 'is_deleted'=>0])->andWhere(['>', 'price', 0]);
         }
 
             $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 20]);

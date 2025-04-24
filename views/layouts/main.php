@@ -4,6 +4,8 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
+use app\models\Category;
+use app\models\Shop;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
@@ -34,6 +36,15 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
 
 <header id="header">
     <?php
+    $coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
+    $city = isset($_COOKIE[$coockieName]) ? $_COOKIE[$coockieName]: null;
+    $shop_id = null;
+    if(!empty($city)){
+        $shopData = Shop::findOne(['name'=>$city]);
+        if($shopData){
+            $shop_id = intVal($shopData->getAttribute('id'));
+        }
+    }
     NavBar::begin([
         'brandLabel' => Html::img('@web/customAssets/images/logo.png', [
             'alt' => Yii::$app->name,
@@ -42,19 +53,33 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark sec-bg-color fixed-top']
     ]);
+    $oruzhie = '#';
+    $optika = '#';
+    $teplovizory = '#';
+    if($shop_id){
+        $categories = Category::find()->where(['shop_id' => $shop_id])->andWhere(['is_deleted'=>0])->andWhere(['name' => ['Оружие', 'Оптика', 'Тепловизоры']])->asArray()->indexBy('name')->all();
+        if(isset($categories['ОРУЖИЕ']) && isset($categories['ОРУЖИЕ']['id'])){
+            $oruzhie = Url::to(['category/view', 'id' => $categories['ОРУЖИЕ']['id']]);
+        }
+        if(isset($categories['ОПТИКА']) && isset($categories['ОПТИКА']['id'])){
+            $optika = Url::to(['category/view', 'id' => $categories['ОПТИКА']['id']]);
+        }
+        if(isset($categories['ТЕПЛОВИЗОРЫ']) && isset($categories['ТЕПЛОВИЗОРЫ']['id'])){
+            $teplovizory = Url::to(['category/view', 'id' => $categories['ТЕПЛОВИЗОРЫ']['id']]);
+        }
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Оружие', 'url' => ['#']],
+            ['label' => 'Оружие', 'url' => [$oruzhie]],
             ['label' => 'Стрелковый тир', 'url' => ['#']],
-            ['label' => 'Оптика', 'url' => ['#']],
-            ['label' => 'Тепловизоры', 'url' => ['#']],
+            ['label' => 'Оптика', 'url' => [$optika]],
+            ['label' => 'Тепловизоры', 'url' => [$teplovizory]],
             ['label' => 'О компании', 'url' => [Url::to(['home/about'])]],
             ['label' => 'Контакты', 'url' => [Url::to(['home/contacts'])]]
         ]
     ]);
-$coockieName = !empty(Yii::$app->params['citySelect']['coockieName']) ? Yii::$app->params['citySelect']['coockieName'] : 'usercity';
-    $city = isset($_COOKIE[$coockieName]) ? $_COOKIE[$coockieName]: null;
+
     echo Html::tag('div', 'Ваш город: ' . Html::tag('span', $city, ['class' => 'inner-span']), [
         'class' => 'ms-auto navbar-text text-white city-select'
     ]);
